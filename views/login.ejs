@@ -1,0 +1,22 @@
+<% layout('layout') %>
+<%- include('./includes/header.ejs') %>
+<main class="main">
+    <div class="login-form">
+        <h2 class="heading-secondary ma-bt-lg">
+            Log into your account
+        </h2>
+        <form action="" method="POST" class="form form--login">
+            <div class="form-group">
+                <label for="email" class="form__label">Email address</label>
+                <input type="email" id="email" name="email" placeholder="you@example.com" class="form__input" required>
+            </div>
+            <div class="form-group ma-bt-md">
+                <label for="password" class="form__label">Email address</label>
+                <input type="password" id="password" name="password" placeholder="********" class="form__input" minlength="8" required>
+            </div>
+            <div class="form__group">
+                <button type="submit" class="btn btn--green">Login</button>
+            </div>
+        </form>
+    </div>
+</main>

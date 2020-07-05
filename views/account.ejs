@@ -1,0 +1,130 @@
+<% layout('layout') %>
+<%- include('./includes/header.ejs') %>
+<main class="main">
+    <div class="user-view">
+        <nav class="user-view__menu">
+            <ul class="side-nav">
+                <li class="side-nav--active">
+                    <a href="#">
+                        <svg>
+                            <use xlink:href="img/icons.svg#icon-settings"></use>
+                        </svg> Setting
+                    </a>
+                </li>
+                <li class="side-nav">
+                    <a href="/my-tours">
+                        <svg>
+                            <use xlink:href="img/icons.svg#icon-briefcase"></use>
+                        </svg> My Bookings
+                    </a>
+                </li>
+                <li class="side-nav">
+                    <a href="#">
+                        <svg>
+                            <use xlink:href="img/icons.svg#icon-star"></use>
+                        </svg> My reviews
+                    </a>
+                </li>
+                <li class="side-nav">
+                    <a href="#">
+                        <svg>
+                            <use xlink:href="img/icons.svg#icon-credit-card"></use>
+                        </svg> Billing
+                    </a>
+                </li>
+            </ul>
+            <% if(user.role === 'admin'){ %>
+            <div class="admin-nav">
+                <h5 class="admin-nav__heading">Admin</h5>
+                <ul class="side-nav">
+                    <li class="side-nav">
+                        <a href="#">
+                            <svg>
+                                <use xlink:href="/img/icons.svg#icon-map"></use>
+                            </svg> Manage tours
+                        </a>
+                    </li>
+                    <li class="side-nav">
+                        <a href="#">
+                            <svg>
+                                <use xlink:href="/img/icons.svg#icon-users"></use>
+                            </svg> Manage users
+                        </a>
+                    </li>
+                    <li class="side-nav">
+                        <a href="#">
+                            <svg>
+                                <use xlink:href="/img/icons.svg#icon-star"></use>
+                            </svg> Manage reviews
+                        </a>
+                    </li>
+                    <li class="side-nav">
+                        <a href="#">
+                            <svg>
+                                <use xlink:href="/img/icons.svg#icon-briefcase"></use>
+                            </svg> Billing
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <% } %>
+        </nav>
+        <div class="user-view__content">
+            <div class="user-view__form-container">
+                <h2 class="heading-secondary ma-bt-md">
+                    Your account settings
+                </h2>
+                
+                <form class="form form-user-data">
+                    <div class="form__group">
+                        <label for="name" class="form__label">Username</label>
+                        <input type="text" id="name" name="username" class="form__input" value="<%= user.name %>" required>
+                    </div>
+                    <div class="form__group ma-bt-md">
+                        <label for="email" class="form__label">Email address</label>
+                        <input type="email" id="email" name="email" value="<%= user.email %>" class="form__input"
+                            required>
+                    </div>
+                    <div class="form__group form__photo-upload">
+                        <img src="/img/users/<%= user.photo %>" alt="User photo" class="form__user-photo">
+                        <input type="file" accept="image/*" id="photo" name="photo" class="form__upload">
+                        <label for="photo">Choose new photo</label>
+                    </div>
+                    <div class="form__group right">
+                        <button class="btn btn--small btn--green" type="submit">
+                            Save settings
+                        </button>
+                    </div>
+                </form>
+            </div>
+            <div class="line">
+                &nbsp;
+            </div>
+            <div class="user-view__form-container">
+                <h2 class="heading-secondary ma-bt-md">Password change</h2>
+                <form action="" class="form form-user-settings">
+                    <div class="form__group">
+                        <label for="password-current" class="form__label">Current password</label>
+                        <input type="password" id="password-current" class="form__input" placeholder='••••••••'
+                            minlength="8" required>
+                    </div>
+                    <div class="form__group">
+                        <label for="password" class="form__label">New password</label>
+                        <input type="password" id="password" class="form__input" placeholder='••••••••' minlength="8"
+                            required>
+                    </div>
+                    <div class="form__group ma-bt-lg">
+                        <label for="password-confirm" class="form__label">Confirm password</label>
+                        <input type="password" id="password-confirm" class="form__input" placeholder='••••••••'
+                            minlength="8" required>
+                    </div>
+                    <div class="form__group right">
+                        <button class="btn btn--small btn--green">
+                            Save password
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
